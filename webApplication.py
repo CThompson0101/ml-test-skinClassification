@@ -1,6 +1,7 @@
 import streamlit as st
 #import tensorflow as tf
 from PIL import Image
+import requests
 #import numpy as np
 #import cv2
 
@@ -18,10 +19,18 @@ st.set_page_config(
     initial_sidebar_state="collapsed",  # Collapsed the sidebar on initial load
 )
 # Add your logo and resize it
-logo_path = "ml-test-skinClassification/logo.JPG"  # Replace with the path to your logo
-logo = Image.open(logo_path)
-logo.thumbnail((100, 100))  # Adjust the size as needed
+logo_url = "https://raw.githubusercontent.com/CThompson0101/ml-test-skinClassification/2065eb17785af16236324e84c7ea9b4f75e9b971/logo.jpg"
+response = requests.get(logo_url)
 
+if response.status_code == 200:
+    # Load image from BytesIO
+    logo = Image.open(BytesIO(response.content))
+    logo.thumbnail((100, 100))
+
+    # Display the logo
+    st.image(logo, use_column_width=True)
+else:
+    st.write(f"Failed to fetch the image. Status code: {response.status_code}")
 ## Create a layout with two columns
 #col1, col2 = st.columns([1, 4])
 
