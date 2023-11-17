@@ -74,47 +74,7 @@ if uploaded_image is not None:
     if (predicted_class == 1):
         st.write(f"Diagnosis: Normal Skin Lesion/ Benign")
     elif (predicted_class == 2):
-        st.write(f"Diagnosis: Benign Keratosis-like Lesion (BKL)")
-    elif (predicted_class == 3):
-        st.write(f"Diagnosis: Dermatofibroma (DF)")
-    elif (predicted_class == 4):
-        st.write(f"Diagnosis: Melanoma (MEL)")
-    elif (predicted_class == 5):
-        st.write(f"Diagnosis: Melanocytic Nevi (NV)")
-    elif (predicted_class == 6):
-        st.write(f"Diagnosis: Vascular Lesion (VASC)")
-    elif (predicted_class == 0):
-        st.write(f"Diagnosis: Actinic Keratoses (AKIEC)")
-
-if capture_image:
-    # Add a delay before capturing the image (you can adjust the duration)
-#    time.sleep(2)  # 2 seconds delay
-
-    # Use OpenCV to capture an image from the camera
-    cap = cv2.VideoCapture(0)  # 0 represents the default camera
-    ret, frame = cap.read()
-    cap.release()
-
-    # Convert OpenCV frame to Pillow image
-    pil_image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-
-    # Display the captured image
-    st.image(pil_image, caption="Captured Image", use_column_width=True)
-
-    # Perform image classification using your model
-    # Preprocess the image (resize, normalize, etc.) as needed
-    img_array = preprocess_image(frame, target_size=(64, 64))
-    
-    # Make predictions
-    predictions = model.predict(img_array)
-
-    # Get the class with the highest probability
-    predicted_class = np.argmax(predictions)
-
-    if (predicted_class == 1):
-        st.write(f"Diagnosis: Normal Skin Lesion/ Benign")
-    elif (predicted_class == 2):
-        st.write(f"Diagnosis: Benign Keratosis-like Lesion (BKL)")
+        st.write(f"Diagnosis: Normal/ Benign Keratosis-like Lesion (BKL)")
     elif (predicted_class == 3):
         st.write(f"Diagnosis: Dermatofibroma (DF)")
     elif (predicted_class == 4):
