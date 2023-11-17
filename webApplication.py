@@ -3,6 +3,9 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 import cv2
+import os
+
+os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 
 # Load the trained model
