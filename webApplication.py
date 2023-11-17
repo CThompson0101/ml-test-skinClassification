@@ -1,6 +1,6 @@
 import streamlit as st
 #import tensorflow as tf
-#from PIL import Image
+from PIL import Image
 #import numpy as np
 #import cv2
 
@@ -17,10 +17,10 @@ st.set_page_config(
     layout="centered",  # You can use "wide" or "centered" layout
     initial_sidebar_state="collapsed",  # Collapsed the sidebar on initial load
 )
-## Add your logo and resize it
-#logo_path = "logo.JPG"  # Replace with the path to your logo
-#logo = Image.open(logo_path)
-#logo.thumbnail((100, 100))  # Adjust the size as needed
+# Add your logo and resize it
+logo_path = "ml-test-skinClassification/logo.JPG"  # Replace with the path to your logo
+logo = Image.open(logo_path)
+logo.thumbnail((100, 100))  # Adjust the size as needed
 
 ## Create a layout with two columns
 #col1, col2 = st.columns([1, 4])
