@@ -4,7 +4,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 #import numpy as np
-#import cv2
+import cv2
 
 
 # Load the trained model
@@ -28,8 +28,6 @@ if response.status_code == 200:
     logo = Image.open(BytesIO(response.content))
     logo.thumbnail((100, 100))
 
-    # Display the logo
-    st.image(logo, use_column_width=True)
 else:
     st.write(f"Failed to fetch the image. Status code: {response.status_code}")
 # Create a layout with two columns
@@ -48,24 +46,24 @@ col2.title("Skin Lesion Classifier App")
 uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 capture_image = st.sidebar.button("Capture Image")
 
-#def preprocess_image(image, target_size):
-#    img = Image.open(image).resize(target_size)
-#    img_array = np.asarray(img)
-#    if img_array.shape[-1] == 4:  # Fix here, use img_array instead of img
-#        img_array = img_array[:, :, :3]
-#    img_array = img_array / 255.0
-#    img_array = np.expand_dims(img_array, axis=0)
+def preprocess_image(image, target_size):
+    img = Image.open(image).resize(target_size)
+    img_array = np.asarray(img)
+    if img_array.shape[-1] == 4:  # Fix here, use img_array instead of img
+        img_array = img_array[:, :, :3]
+    img_array = img_array / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
     
-#    return img_array
+    return img_array
 
-## Check if an image is uploaded
-#if uploaded_image is not None:
-#    # Display the uploaded image
-#    st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
+# Check if an image is uploaded
+if uploaded_image is not None:
+    # Display the uploaded image
+    st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
 
-#    # Perform image classification using your model
-#    # Preprocess the image (resize, normalize, etc.) as needed
-#    img_array = preprocess_image(uploaded_image, target_size=(64, 64))
+    # Perform image classification using your model
+    # Preprocess the image (resize, normalize, etc.) as needed
+    img_array = preprocess_image(uploaded_image, target_size=(64, 64))
     
 #    # Make predictions
 #    predictions = model.predict(img_array)
