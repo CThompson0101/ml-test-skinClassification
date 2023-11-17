@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import tensorflow as tf
 from PIL import Image
@@ -8,7 +6,6 @@ import cv2
 
 
 # Load the trained model
-@st.cache_data()
 def load_model():
     model = tf.keras.models.load_model('model.hdf5')
     return model
