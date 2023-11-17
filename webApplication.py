@@ -1,6 +1,6 @@
-#import streamlit as st
+import streamlit as st
 #import tensorflow as tf
-#from PIL import Image
+from PIL import Image
 #import numpy as np
 import cv2
 
@@ -32,15 +32,15 @@ col2.title("Skin Lesion Classifier App")
 uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 capture_image = st.sidebar.button("Capture Image")
 
-def preprocess_image(image, target_size):
-    img = Image.open(image).resize(target_size)
-    img_array = np.asarray(img)
-    if img_array.shape[-1] == 4:  # Fix here, use img_array instead of img
-        img_array = img_array[:, :, :3]
-    img_array = img_array / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+#def preprocess_image(image, target_size):
+ #   img = Image.open(image).resize(target_size)
+  #  img_array = np.asarray(img)
+   # if img_array.shape[-1] == 4:  # Fix here, use img_array instead of img
+    #    img_array = img_array[:, :, :3]
+    #img_array = img_array / 255.0
+    #img_array = np.expand_dims(img_array, axis=0)
     
-    return img_array
+    #return img_array
 
 # Check if an image is uploaded
 #if uploaded_image is not None:
