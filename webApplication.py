@@ -3,14 +3,14 @@ import streamlit as st
 from PIL import Image
 import requests
 from io import BytesIO
-#import numpy as np
+import numpy as np
 import cv2
 
 
 # Load the trained model
 #def load_model():
-#    model = tf.keras.models.load_model('model.hdf5')
-#    return model
+  #  model = tf.keras.models.load_model('model.hdf5')
+ #   return model
 #model = load_model()
 
 st.set_page_config(
@@ -65,7 +65,7 @@ if uploaded_image is not None:
     # Preprocess the image (resize, normalize, etc.) as needed
     img_array = preprocess_image(uploaded_image, target_size=(64, 64))
     
-#    # Make predictions
+    # Make predictions
 #    predictions = model.predict(img_array)
 
 #    # Get the class with the highest probability
