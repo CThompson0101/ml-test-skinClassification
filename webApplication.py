@@ -32,21 +32,21 @@ if response.status_code == 200:
     st.image(logo, use_column_width=True)
 else:
     st.write(f"Failed to fetch the image. Status code: {response.status_code}")
-## Create a layout with two columns
-#col1, col2 = st.columns([1, 4])
+# Create a layout with two columns
+col1, col2 = st.columns([1, 4])
 
-## Add the resized logo to the first column
-#col1.image(logo, use_column_width=True)
+# Add the resized logo to the first column
+col1.image(logo, use_column_width=True)
 
-## Add a horizontal rule to separate the logo from the title
-#col1.write('<hr style="height:2px; width:530%; background-color: black">', unsafe_allow_html=True)
+# Add a horizontal rule to separate the logo from the title
+col1.write('<hr style="height:2px; width:530%; background-color: black">', unsafe_allow_html=True)
 
-## Add the title to the second column
-#col2.title("Skin Lesion Classifier App")
+# Add the title to the second column
+col2.title("Skin Lesion Classifier App")
 
-## Sidebar for image upload and camera capture
-#uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-#capture_image = st.sidebar.button("Capture Image")
+# Sidebar for image upload and camera capture
+uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+capture_image = st.sidebar.button("Capture Image")
 
 #def preprocess_image(image, target_size):
 #    img = Image.open(image).resize(target_size)
