@@ -1,5 +1,5 @@
 import streamlit as st
-#import tensorflow as tf
+import tensorflow as tf
 from PIL import Image
 import requests
 from io import BytesIO
@@ -8,10 +8,10 @@ import cv2
 
 
 # Load the trained model
-#def load_model():
-  #  model = tf.keras.models.load_model('model.hdf5')
- #   return model
-#model = load_model()
+def load_model():
+    model = tf.keras.models.load_model('model.hdf5')
+    return model
+model = load_model()
 
 st.set_page_config(
     page_title="Skin Lesion Classifier App",
@@ -66,25 +66,25 @@ if uploaded_image is not None:
     img_array = preprocess_image(uploaded_image, target_size=(64, 64))
     
     # Make predictions
-#    predictions = model.predict(img_array)
+    predictions = model.predict(img_array)
 
 #    # Get the class with the highest probability
-#    predicted_class = np.argmax(predictions)
+    predicted_class = np.argmax(predictions)
 
-#    if (predicted_class == 1):
-#        st.write(f"Diagnosis: Normal Skin Lesion/ Benign")
-#    elif (predicted_class == 2):
-#        st.write(f"Diagnosis: Benign Keratosis-like Lesion (BKL)")
-#    elif (predicted_class == 3):
-#        st.write(f"Diagnosis: Dermatofibroma (DF)")
-#    elif (predicted_class == 4):
-#        st.write(f"Diagnosis: Melanoma (MEL)")
-#    elif (predicted_class == 5):
-#        st.write(f"Diagnosis: Melanocytic Nevi (NV)")
-#    elif (predicted_class == 6):
-#        st.write(f"Diagnosis: Vascular Lesion (VASC)")
-#    elif (predicted_class == 0):
-#        st.write(f"Diagnosis: Actinic Keratoses (AKIEC)")
+    if (predicted_class == 1):
+        st.write(f"Diagnosis: Normal Skin Lesion/ Benign")
+    elif (predicted_class == 2):
+        st.write(f"Diagnosis: Benign Keratosis-like Lesion (BKL)")
+    elif (predicted_class == 3):
+        st.write(f"Diagnosis: Dermatofibroma (DF)")
+    elif (predicted_class == 4):
+        st.write(f"Diagnosis: Melanoma (MEL)")
+    elif (predicted_class == 5):
+        st.write(f"Diagnosis: Melanocytic Nevi (NV)")
+    elif (predicted_class == 6):
+        st.write(f"Diagnosis: Vascular Lesion (VASC)")
+    elif (predicted_class == 0):
+        st.write(f"Diagnosis: Actinic Keratoses (AKIEC)")
 
 #if capture_image:
 #    # Add a delay before capturing the image (you can adjust the duration)
